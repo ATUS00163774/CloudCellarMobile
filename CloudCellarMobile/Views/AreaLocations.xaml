@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CloudCellarMobile.Views.AreaLocations"
+             xmlns:viewModels="clr-namespace:CloudCellarMobile.ViewModels"
+             NavigatedTo="ContentPage_NavigatedTo"
+             Title="Areas and Locations">
+    <ContentPage.BindingContext>
+        <viewModels:AreaLocationsViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+
+        <!--Select Area Label-->
+        <Grid Grid.Row="0">
+            <Label  Text="Select Area" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" FontSize="Large" Margin="20,0,20,0"/>
+        </Grid>
+        
+        <!--Area Collection View-->
+        <Grid Grid.Row="1">
+            <CollectionView x:Name="areasCollection"
+                ItemsSource="{Binding AllAreas}"
+                Margin="20"
+                SelectionMode="Single"
+                SelectionChangedCommand="{Binding AreaSelectedCommand}"
+                SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+
+                <!-- Designate how the collection of items are laid out -->
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
+                </CollectionView.ItemsLayout>
+
+                <!-- Define the appearance of each item in the list -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding}" FontSize="Large"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+
+        <!--Area Buttons-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Create New" Grid.Column="2" Command="{Binding NewAreaCommand}" Margin="10,50,10,50"/>
+        </Grid>
+
+        <!--Select Area Label-->
+        <Grid Grid.Row="3">
+            <Label  Text="Select Location" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" FontSize="Large" Margin="20,0,20,0"/>
+        </Grid>
+
+        <!--Location Collection View-->
+        <Grid Grid.Row="4">
+            <CollectionView x:Name="locationssCollection"
+                ItemsSource="{Binding AllLocations}"
+                Margin="20"
+                SelectionMode="Single"
+                SelectionChangedCommand="{Binding LocationSelectedCommand}"
+                SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                IsEnabled="{Binding IsAreaSelected}">
+
+                <!-- Designate how the collection of items are laid out -->
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
+                </CollectionView.ItemsLayout>
+
+                <!-- Define the appearance of each item in the list -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding}" FontSize="Large"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+
+        <!--Location Buttons-->
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Select" Grid.Column="0" Command="{Binding SelectCommand}" IsEnabled="{Binding IsLocationSelected}" Margin="20,50,10,50"/>
+            <Button Text="Create New" Grid.Column="2" Command="{Binding NewLocationCommand}" Margin="10,50,10,50"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

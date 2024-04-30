@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CloudCellarMobile.Views.Main"
+             xmlns:viewModels="clr-namespace:CloudCellarMobile.ViewModels"
+             NavigatedTo="ContentPage_NavigatedTo"
+             Title="Home">
+
+    <!--<ContentPage.BindingContext>
+        <viewModels:MainViewModel/>
+    </ContentPage.BindingContext>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+
+        <!--Outlet and Date-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                <Label  Text="{Binding CurrentOutlet}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Large" Grid.Column="0" Margin="20,0,5,0"/>
+                <Label  Text="{Binding CurrentAuditShortString}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Large" Grid.Column="0" Margin="5,0,20,0"/>
+            </HorizontalStackLayout>
+            
+        </Grid>
+
+        <!--Area and Location-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                <Label  Text="Counting in:" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="0" Margin="20,0,2,0"/>
+                <Label  Text="{Binding CurrentArea}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="0" Margin="5,0,5,0" FontAttributes="Bold"/>
+                <Label  Text="-" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="0" Margin="0,0,0,0" FontAttributes="Bold"/>
+                <Label  Text="{Binding CurrentLocation}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="Medium" Grid.Column="0" Margin="5,0,20,0" FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+        </Grid>
+
+        <!--Search and Sort-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry Placeholder="Search" Grid.Column="0" Margin="10,0,5,0" FontSize="Small" Text="{Binding SearchText}"/>
+            <Picker Title="Category" Grid.Column="1" Margin="5,0,5,0" FontSize="Small" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}"/>
+            <Picker Title="Sub-Category" Grid.Column="2" Margin="5,0,10,0" FontSize="Small" ItemsSource="{Binding SubCategories}" SelectedItem="{Binding SelectedSubCategory}"/>
+
+        </Grid>
+
+        <!--Product Collection View-->
+        <Grid Grid.Row="3">
+            <CollectionView x:Name="productsCollection"
+                    ItemsSource="{Binding FilteredProducts}"
+                    Margin="20"                   
+                    SelectionMode="Single"
+                    SelectionChangedCommand="{Binding NewStockCommand}"
+                    SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+
+                <!-- Designate how the collection of items are laid out -->
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <!-- Define the appearance of each item in the list -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding}" FontSize="Medium"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+
+        <!--Last Item Counted-->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="{Binding RecentStock}" Grid.Row="0" FontSize="Medium" HorizontalTextAlignment="Start" Margin="20,0,5,0"/>
+
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Command ="{Binding ViewStocksCommand}" Grid.Column="0" Text="Stocks" Margin="20" />
+            <Button Command ="{Binding ScanBarcodeCommand}" Grid.Column="1" Text="Scan" Margin="10" />
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

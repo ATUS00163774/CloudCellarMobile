@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CloudCellarMobile.Models.Area">
+    <Position X="10.75" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAQAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Area.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CloudCellarMobile.Models.AreaLocation">
+    <Position X="13" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\AreaLocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CloudCellarMobile.Models.Audit">
+    <Position X="8.5" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAABAAAAAEAAAAAAAkAAAQAAAAAAAIAEAAAAA=</HashCode>
+      <FileName>Models\Audit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CloudCellarMobile.Models.Location">
+    <Position X="10.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAQAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CloudCellarMobile.Models.Outlet">
+    <Position X="13" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAQAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Outlet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CloudCellarMobile.Models.Product">
+    <Position X="8.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAEAgAAEAAAAAAQICAAAUAAAAAAAAAABCAA=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CloudCellarMobile.Models.Stock">
+    <Position X="10.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>kAAKAAAAAAAAAAAEAAAAAAgAACAQAIAAIAAAAAAAAQA=</HashCode>
+      <FileName>Models\Stock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CloudCellarMobile.Data.DataAccess">
+    <Position X="6" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIACgAACAAAAAQAAAIiACAAIgAAAwAAAAAQAgQA=</HashCode>
+      <FileName>Data\DataAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CloudCellarMobile.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CloudCellarMobile"
+    xmlns:viewModels="clr-namespace:CloudCellarMobile.ViewModels"
+    xmlns:views="clr-namespace:CloudCellarMobile.Views"
+    BindingContext="{Binding Source={viewModels:MainViewModel}}"
+    Shell.FlyoutBehavior="Flyout"
+    Title="CloudCellar">
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <VerticalStackLayout>
+                <Image Source="dotnet_bot.jpg"
+                       Opacity="0.6" />
+                <Label Text="{Binding CurrentOutlet}"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Margin="0,0,0,10"/>
+                <Label Text="{Binding CurrentAuditPrettyString}"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       Margin="0,0,0,20"/>
+            </VerticalStackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout>
+                <Label Text="CloudCellar"
+                       TextColor="Black"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center" />
+                <Label Text="S00163774 - ATUSligo"
+                       TextColor="Black"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,10"/>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate views:Main}"
+        Route="Main"/>
+
+    <MenuItem Text="Select Outlet"
+              IconImageSource="dotnet_bot.png"
+              Command="{Binding SelectOutletCommand}">
+    </MenuItem>
+
+    <MenuItem Text="Select Audit"
+              IconImageSource="dotnet_bot.png"
+              Command="{Binding SelectAuditCommand}">
+    </MenuItem>
+
+    <MenuItem Text="Select Area and Location"
+              IconImageSource="dotnet_bot.png"
+              Command="{Binding SelectAreaLocationCommand}">
+    </MenuItem>
+
+    <MenuItem Text="">
+    </MenuItem>
+
+    <MenuItem Text="New Product"
+              IconImageSource="dotnet_bot.png"
+              Command="{Binding NewProductCommand}">
+    </MenuItem>
+
+    <MenuItem Text="Audit Trail"
+              IconImageSource="dotnet_bot.png"
+              Command="{Binding NewProductCommand}">
+    </MenuItem>
+
+</Shell>

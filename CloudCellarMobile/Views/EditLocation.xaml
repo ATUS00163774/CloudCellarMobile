@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CloudCellarMobile.Views.EditLocation"
+             xmlns:viewModels="clr-namespace:CloudCellarMobile.ViewModels" >
+    
+    <ContentPage.BindingContext>
+        <viewModels:EditLocationViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Margin="10,0,10,0">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="75*"/>
+        </Grid.RowDefinitions>
+
+        <!--Label-->
+        <Grid Grid.Row="0">
+            <Label  Text="Area Details"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Start"
+                    FontSize="Large" />
+        </Grid>
+
+        <!--Name-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Column="0" Margin="15">
+                <Label Text="Name"/>
+                <Entry Placeholder="Name" Text="{Binding Name}"/>
+            </VerticalStackLayout>
+        </Grid>
+
+
+        <!--Buttons-->
+        <Grid Grid.Row="2">
+            <VerticalStackLayout Grid.Column="0" Margin="15">
+                <Button Text="Submit" Command="{Binding SubmitCommand}" Margin="50,0,50,0"/>
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

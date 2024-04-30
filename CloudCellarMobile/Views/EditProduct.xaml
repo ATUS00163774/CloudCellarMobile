@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CloudCellarMobile.Views.EditProduct"
+             xmlns:viewModels="clr-namespace:CloudCellarMobile.ViewModels" >
+    
+    <ContentPage.BindingContext>
+        <viewModels:EditProductViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Margin="10,0,10,0">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+
+        <!--Label-->
+        <Grid Grid.Row="0">
+            <Label  Text="Product Details"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Start"
+                    FontSize="Large" />
+        </Grid>
+
+        <!--Brand and Name-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Column="0" Margin="15,10,5,10">
+                <Label Text="Brand"/>
+                <Entry Placeholder="Brand" Text="{Binding Brand}"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Margin="5,10,15,10">
+                <Label Text="Name"/>
+                <Entry Placeholder="Name" Text="{Binding Name}"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!--Size and Barcode-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="70*"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Column="0" Margin="15">
+                <Label Text="Size (ml)"/>
+                <Entry Placeholder="Size" Text="{Binding Size}" Margin="0,0,0,10"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Margin="15">
+                <Label Text="Barcode"/>
+                <Entry Placeholder="IAN13" Text="{Binding Barcode}" Margin="0,0,0,10"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!--Category and SubCategory-->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Column="0" Margin="15">
+                <Label Text="Category"/>
+                <Entry Placeholder="Category" Text="{Binding Category}" Margin="0,0,0,10"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Margin="15">
+                <Label Text="Sub-Category"/>
+                <Entry Placeholder="Sub-Category" Text="{Binding SubCategory}" Margin="0,0,0,10"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!--FullWeight and EmptyWeight-->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout Grid.Column="0" Margin="15">
+                <Label Text="Full Weight"/>
+                <Entry Placeholder="Full Weight" Text="{Binding FullWeight}" Margin="0,0,0,10"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Margin="15">
+                <Label Text="Empty Weight"/>
+                <Entry Placeholder="Empty Weight" Text="{Binding EmptyWeight}" Margin="0,0,0,10"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="5">
+            <VerticalStackLayout Grid.Column="0" Margin="15">
+                <Button Text="Submit" Command="{Binding SubmitCommand}" Margin="50,0,50,0"/>
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

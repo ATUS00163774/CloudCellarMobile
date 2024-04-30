@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CloudCellarMobile.Views.Audits"
+             xmlns:viewModels="clr-namespace:CloudCellarMobile.ViewModels"
+             NavigatedTo="ContentPage_NavigatedTo"
+             Title="Audits">
+    <ContentPage.BindingContext>
+        <viewModels:AuditsViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+
+        <!--Outlet Collection View-->
+        <Grid Grid.Row="0">
+            <CollectionView x:Name="auditsCollection"
+                ItemsSource="{Binding AllAudits}"
+                Margin="20"
+                SelectionMode="Single"
+                SelectionChangedCommand="{Binding AuditSelectedCommand}"
+                SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+
+                <!-- Designate how the collection of items are laid out -->
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="15" />
+                </CollectionView.ItemsLayout>
+
+                <!-- Define the appearance of each item in the list -->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding}" FontSize="Large"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </Grid>
+
+        <!--Buttons-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Text="Select" Grid.Column="0" Command="{Binding SelectCommand}" IsEnabled="{Binding IsAuditSelected}" Margin="20,50,10,50"/>
+            <Button Text="Create New" Grid.Column="2" Command="{Binding NewAuditCommand}" Margin="10,50,10,50"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>
